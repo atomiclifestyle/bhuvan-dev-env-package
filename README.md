@@ -2,16 +2,31 @@
 
 ## How to Use It
 
-The workflow requires you to first navigate into the `startup` directory.
-
 ```bash
-cd startup
+npm install bhuvan-dev-env-client
 ```
 
-Then, run the Makefile:
-
 ```bash
-make
-```
+import { createBhuvanClient } from 'bhuvan-dev-env-client';
 
-The `make` command will handle everything from inside the `startup` folder, but it will correctly install the final package `bhuvan-api.tar.gz` and create the `.env` file in your main project directory.
+// The user's unique ID
+const myUserId = "user-abc-123";
+
+// 1. Initialize the client with the user's ID
+const bhuvan = createBhuvanClient(myUserId);
+
+// 2. Call the simplified functions directly
+async function run() {
+  try {
+    const routingData = await bhuvan.getRouting(17, 78, 18, 79);
+    console.log("Routing Data:", routingData);
+
+    const queryResult = await bhuvan.executeCentralQuery("SELECT * FROM villages");
+    console.log("Query Result:", queryResult);
+  } catch (error) {
+    console.error("API call failed:", error.message);
+  }
+}
+
+run();
+```
