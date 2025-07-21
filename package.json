@@ -1,0 +1,20 @@
+{
+  "name": "@bhuvan_admin/bhuvan-api",
+  "version": "1.0.0",
+  "description": "A simplified SDK to interact with the Bhuvan API service.",
+  "main": "src/index.js",
+  "type": "module",
+  "publishConfig": {
+    "access": "public"
+  },
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "keywords": [
+    "bhuvan",
+    "api",
+    "sdk"
+  ],
+  "author": "Your Name",
+  "license": "MIT"
+}
