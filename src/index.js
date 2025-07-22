@@ -1,31 +1,15 @@
-// The base URL for the actual backend service
 const BHUVAN_BACKEND_URL = "https://bhuvan-kit-backend.onrender.com";
 
-/**
- * Creates a new Bhuvan API client instance.
- * @param {string} userId - The unique user ID for authentication.
- * @returns {object} An object containing all the simplified API functions.
- */
 export function createBhuvanClient(userId) {
   if (!userId) {
     throw new Error("A userId must be provided to create a Bhuvan client.");
   }
 
-  // All functions will use the provided userId for authentication.
   const headers = {
     'x-user-id': userId
   };
 
-  // Return an object containing all the simplified functions
   return {
-    /**
-     * Fetches routing data between two geographical points.
-     * @param {number} lat1 - Latitude of the starting point.
-     * @param {number} lon1 - Longitude of the starting point.
-     * @param {number} lat2 - Latitude of the destination point.
-     * @param {number} lon2 - Longitude of the destination point.
-     * @returns {Promise<object>}
-     */
     getRouting: async (lat1, lon1, lat2, lon2) => {
       try {
         const params = new URLSearchParams({ lat1, lon1, lat2, lon2 });
@@ -40,13 +24,6 @@ export function createBhuvanClient(userId) {
       }
     },
 
-    /**
-     * Fetches thematic data for a specific location and year.
-     * @param {number} lat - Latitude of the location.
-     * @param {number} lon - Longitude of the location.
-     * @param {string} year - The year for the thematic data.
-     * @returns {Promise<object>}
-     */
     getThematicData: async (lat, lon, year) => {
       try {
         const params = new URLSearchParams({ lat, lon, year });
@@ -61,11 +38,6 @@ export function createBhuvanClient(userId) {
       }
     },
 
-    /**
-     * Performs geocoding for a village category.
-     * @param {string} category - The village category to geocode.
-     * @returns {Promise<object>}
-     */
     villageGeocoding: async (category) => {
       try {
         const params = new URLSearchParams({ village: category });
@@ -80,11 +52,6 @@ export function createBhuvanClient(userId) {
       }
     },
 
-    /**
-     * Downloads an ellipsoid file. This function is intended for browser environments.
-     * @param {string} id - The ID of the ellipsoid file to download.
-     * @returns {Promise<object>}
-     */
     getEllipsoid: async (id) => {
       try {
         const params = new URLSearchParams({ id });
@@ -113,10 +80,6 @@ export function createBhuvanClient(userId) {
       }
     },
 
-    /**
-     * Triggers the creation of a user database on the backend.
-     * @returns {Promise<object>}
-     */
     createUser: async () => {
       try {
         const res = await fetch(
@@ -133,11 +96,6 @@ export function createBhuvanClient(userId) {
       }
     },
 
-    /**
-     * Executes a query against the user-specific database.
-     * @param {string} query - The query string to execute.
-     * @returns {Promise<object>}
-     */
     executeQuery: async (query) => {
       try {
         const res = await fetch(
@@ -155,11 +113,6 @@ export function createBhuvanClient(userId) {
       }
     },
 
-    /**
-     * Executes a query against the central database.
-     * @param {string} query - The query string to execute.
-     * @returns {Promise<object>}
-     */
     executeCentralQuery: async (query) => {
       try {
         const res = await fetch(

@@ -1,10 +1,11 @@
 # bhuvan-projects-base
 
-## How to Use It
+## How to Install
 
 ```bash
 npm install bhuvan-dev-env-client
 ```
+## How to Use
 
 ```bash
 import { createBhuvanClient } from 'bhuvan-dev-env-client';
